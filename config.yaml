@@ -1,0 +1,59 @@
+# AgenticAP Configuration
+# Cost-effective, open-source AI stack configuration
+
+app:
+  name: "AgenticAP"
+  version: "1.0.0"
+  description: "AI-native financial automation platform"
+
+agentic_ai:
+  # Use open-source LLMs to reduce costs
+  model:
+    name: "mistral-7b"  # Can be replaced with other open-source models
+    provider: "local"    # Run locally to minimize costs
+    temperature: 0.1     # Low temperature for precise financial reasoning
+    max_tokens: 2048
+  
+  capabilities:
+    read: true          # Document reading and parsing
+    reason: true        # AI-powered reasoning and analysis
+    reconcile: true     # Data reconciliation and validation
+
+document_processing:
+  supported_formats:
+    - "pdf"
+    - "png"
+    - "jpg"
+    - "jpeg"
+    - "tiff"
+    - "docx"
+    - "xlsx"
+  
+  ocr:
+    engine: "tesseract"  # Open-source OCR
+    language: "eng"
+    confidence_threshold: 0.7
+
+financial_rules:
+  invoice_fields:
+    - "invoice_number"
+    - "date"
+    - "vendor_name"
+    - "amount"
+    - "tax"
+    - "total"
+    - "line_items"
+  
+  validation:
+    amount_tolerance: 0.01
+    date_format: "%Y-%m-%d"
+    currency: "USD"
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  debug: false
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
